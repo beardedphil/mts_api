@@ -12,7 +12,7 @@ class ArticleView(viewsets.ModelViewSet):
         keywords = self.request.query_params.get('keywords', None)
 
         if sources is not None:
-            sources = sources.split(',')
+            sources = sources.split()
             for i in range(len(sources)):
                 sources[i] = sources[i].lower()
 
@@ -30,4 +30,5 @@ class ArticleView(viewsets.ModelViewSet):
         else:
             queryset = Article.objects.all()
 
-        return queryset.order_by('-pub_date')
+        return queryset.order_by('-pub_date', 'title', 'id')
+
