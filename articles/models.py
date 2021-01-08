@@ -5,7 +5,7 @@ from django.contrib.postgres.fields import ArrayField
 class Article(models.Model):
     title = models.CharField(max_length=200)
     source = models.CharField(max_length=25)
-    article_link = models.URLField()
+    article_link = models.URLField(unique=True)
     image_link = models.URLField()
     pub_date = models.DateField()
     keywords = ArrayField(
