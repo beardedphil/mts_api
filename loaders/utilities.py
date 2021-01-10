@@ -1,8 +1,6 @@
 import requests
 import newspaper
 import nltk
-import sys
-
 nltk.download('punkt')
 
 
@@ -15,14 +13,12 @@ def get_articles(url, source, ignore_strings=None):
     for article in paper.articles:
         try:
             article.download()
-            print('Downloaded')
         except:
             print('Article failed to download')
             continue
 
         try:
             article.parse()
-            print('Parsed')
         except:
             print('Article failed to parse')
             continue
@@ -31,8 +27,7 @@ def get_articles(url, source, ignore_strings=None):
             try:
                 article.nlp()
             except:
-                print(article)
-                print('Article failed to nlp:', sys.exc_info())
+                print('Article failed to nlp')
                 continue
 
             if not article.keywords:
