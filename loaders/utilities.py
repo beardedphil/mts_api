@@ -1,5 +1,6 @@
 import requests
 import newspaper
+import sys
 
 
 def get_articles(url, source, ignore_strings=None):
@@ -25,7 +26,7 @@ def get_articles(url, source, ignore_strings=None):
             try:
                 article.nlp()
             except:
-                print('Article failed to nlp')
+                print('Article failed to nlp:', sys.exc_info()[0])
                 continue
 
             if not article.keywords:
