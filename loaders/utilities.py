@@ -71,4 +71,4 @@ def validate_article(article, ignore_strings):
 def post_article(article):
     api = 'https://mytrustedsourceapi.herokuapp.com/articles/'
     r = requests.post(api, data=article)
-    time.sleep(0.5)
+    time.sleep(1)
