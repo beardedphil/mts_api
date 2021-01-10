@@ -12,12 +12,14 @@ def get_articles(url, source, ignore_strings=None):
     for article in paper.articles:
         try:
             article.download()
+            print('Downloaded')
         except:
             print('Article failed to download')
             continue
 
         try:
             article.parse()
+            print('Parsed')
         except:
             print('Article failed to parse')
             continue
