@@ -58,6 +58,9 @@ def validate_article(article, ignore_strings):
         if ignore_string in article.url:
             return False
 
+    if not article.image_link:
+        return False
+
     if not article.publish_date:
         return False
 
@@ -67,5 +70,3 @@ def validate_article(article, ignore_strings):
 def post_article(article):
     api = 'https://mytrustedsourceapi.herokuapp.com/articles/'
     r = requests.post(api, data=article)
-
-    print(r.text)
