@@ -58,7 +58,7 @@ def validate_article(article, ignore_strings):
         if ignore_string in article.url:
             return False
 
-    if not article.image_link:
+    if not article.top_image:
         return False
 
     if not article.publish_date:
