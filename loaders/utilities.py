@@ -29,7 +29,7 @@ def get_articles(url, source, ignore_strings=None):
                 article.nlp()
             except:
                 print(article)
-                print('Article failed to nlp:', sys.exc_info()[0])
+                print('Article failed to nlp:', sys.exc_info())
                 continue
 
             if not article.keywords:
