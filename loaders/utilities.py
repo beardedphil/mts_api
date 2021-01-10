@@ -1,6 +1,9 @@
 import requests
 import newspaper
+import nltk
 import sys
+
+nltk.download('punkt')
 
 
 def get_articles(url, source, ignore_strings=None):
