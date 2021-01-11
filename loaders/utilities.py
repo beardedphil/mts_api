@@ -11,7 +11,9 @@ def get_articles(url, source, ignore_strings=None):
     paper = newspaper.build(url)
     print(len(paper.articles))
 
-    for article in paper.articles:
+    for num, article in enumerate(paper.articles, start=1):
+        if num % 25 == 0:
+            time.sleep(30)
         try:
             article.download()
         except:
@@ -71,4 +73,4 @@ def validate_article(article, ignore_strings):
 def post_article(article):
     api = 'https://mytrustedsourceapi.herokuapp.com/articles/'
     r = requests.post(api, data=article)
-    time.sleep(2)
+
