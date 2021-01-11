@@ -1,4 +1,5 @@
 import requests
+import time
 from datetime import datetime, timedelta
 import newspaper
 import nltk
@@ -19,6 +20,7 @@ def get_articles(url, source, ignore_strings=None):
             continue
 
         try:
+            time.sleep(1)
             article.parse()
         except:
             print('Article failed to parse')
