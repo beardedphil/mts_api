@@ -1,5 +1,4 @@
 import requests
-import time
 from datetime import datetime, timedelta
 import newspaper
 import nltk
@@ -12,9 +11,7 @@ def get_articles(url, source, ignore_strings=None):
     paper = newspaper.build(url)
     print(len(paper.articles))
 
-    for num, article in enumerate(paper.articles, start=1):
-        if num % 25 == 0:
-            time.sleep(30)
+    for article in paper.articles:
         try:
             article.download()
         except:
