@@ -21,7 +21,6 @@ def get_articles(url, source, ignore_strings=None):
             continue
 
         try:
-            time.sleep(1)
             article.parse()
         except:
             print('Article failed to parse')
