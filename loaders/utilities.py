@@ -1,5 +1,6 @@
 import requests
 import time
+from datetime import datetime, timedelta
 import newspaper
 import nltk
 nltk.download('punkt')
@@ -65,6 +66,11 @@ def validate_article(article, ignore_strings):
         return False
 
     if not article.publish_date:
+        return False
+
+    expiration = datetime.now() - timedelta(days=2)
+
+    if article.publish_date < expiration:
         return False
 
     return True
