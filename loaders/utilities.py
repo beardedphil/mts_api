@@ -1,6 +1,7 @@
 import requests
 import time
 from datetime import datetime, timedelta
+import pytz
 import newspaper
 import nltk
 nltk.download('punkt')
@@ -67,9 +68,12 @@ def validate_article(article, ignore_strings):
     if not article.publish_date:
         return False
 
+    utc = pytz.UTC
+    article_date = utc.localize(article.publish_date)
     expiration = datetime.now() - timedelta(days=2)
+    expiration_date = utc.localize(expiration)
 
-    if article.publish_date < expiration:
+    if article_date < expiration_date:
         return False
 
     return True
